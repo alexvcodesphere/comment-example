@@ -8,9 +8,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const PORT = 3000;
-const TARGET_URL = 'http://localhost:3001';
-const TOOLS_URL = 'http://localhost:3002';
+const PORT = process.env.PORT || 3000;
+const TARGET_URL = process.env.TARGET_URL || 'http://localhost:3001';
+const TOOLS_URL = process.env.TOOLS_URL || 'http://localhost:3002';
 const COMMENTS_FILE = join(__dirname, 'comments.json');
 
 // Middleware

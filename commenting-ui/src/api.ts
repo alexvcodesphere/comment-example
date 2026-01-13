@@ -1,6 +1,7 @@
 import type { Comment } from './types';
 
-const API_BASE = 'http://localhost:3000/api';
+// Use relative URL in production (works on any domain), or localhost for dev
+const API_BASE = import.meta.env.VITE_API_BASE || '/api';
 
 export async function fetchComments(): Promise<Comment[]> {
   try {

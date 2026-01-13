@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const PORT = 3002;
+const PORT = process.env.PORT || 3002;
 
 // Enable CORS for all origins
 app.use((req, res, next) => {
