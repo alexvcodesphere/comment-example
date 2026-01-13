@@ -1,0 +1,63 @@
+{
+  "projectId": "demo",
+  "pageUrl": "/",
+  "comments": [
+    {
+      "id": "comment_1768305653632_847chszko",
+      "selector": ".hero-content",
+      "xPercentage": 61.04868913857678,
+      "yPercentage": 7.403189066059225,
+      "content": "blabla",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-13T12:00:53.632Z",
+      "resolved": false,
+      "thread": [],
+      "viewport": {
+        "width": 598,
+        "height": 1038
+      }
+    },
+    {
+      "id": "comment_1768305870727_x2exv6wdl",
+      "selector": ".floating-card.card-1",
+      "xPercentage": 40.738705067604705,
+      "yPercentage": 13.59546680005426,
+      "content": "comment",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-13T12:04:30.727Z",
+      "resolved": false,
+      "thread": [],
+      "viewport": {
+        "width": 1457,
+        "height": 1056
+      }
+    },
+    {
+      "id": "comment_1768306023607_cqxkc9svx",
+      "selector": ".floating-card.card-3",
+      "xPercentage": 84.49912565575818,
+      "yPercentage": 38.34483518719479,
+      "content": "floatin card",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-13T12:07:03.607Z",
+      "resolved": false,
+      "thread": [],
+      "viewport": {
+        "width": 1457,
+        "height": 1056
+      }
+    }
+  ]
+}
