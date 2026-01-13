@@ -7,6 +7,7 @@ const __dirname = dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3002;
+const BASE_PATH = process.env.BASE_PATH || '';
 
 // Enable CORS for all origins
 app.use((req, res, next) => {
@@ -15,10 +16,17 @@ app.use((req, res, next) => {
   next();
 });
 
-// Serve the built script
-app.use(express.static(join(__dirname, 'dist')));
+// Serve the built script under the base path
+app.use(BASE_PATH, express.static(join(__dirname, 'dist')));
+
+// Also handle root for when BASE_PATH is set
+if (BASE_PATH) {
+  app.get('/', (req, res) => {
+    res.redirect(BASE_PATH);
+  });
+}
 
 app.listen(PORT, () => {
-  console.log(`📦 Commenting UI serving at http://localhost:${PORT}`);
-  console.log(`   → Script: http://localhost:${PORT}/codesphere-tools.js`);
+  console.log(`📦 Commenting UI serving at http://localhost:${PORT}${BASE_PATH}`);
+  console.log(`   → Script: http://localhost:${PORT}${BASE_PATH}/codesphere-tools.js`);
 });
