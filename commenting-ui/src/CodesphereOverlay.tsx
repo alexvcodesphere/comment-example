@@ -332,9 +332,9 @@ export default function CodesphereOverlay() {
       {/* Comment Pins */}
       {positionedComments.map((comment, index) => {
         const isDragging = dragState?.commentId === comment.id && dragState.isDragging;
-        // Use drag position if actively dragging, otherwise use calculated position
-        const pinX = (dragState?.commentId === comment.id) ? dragState.currentX : comment.absoluteX;
-        const pinY = (dragState?.commentId === comment.id) ? dragState.currentY : comment.absoluteY;
+        // Only use drag position if actively dragging (threshold exceeded), otherwise use calculated position
+        const pinX = isDragging ? dragState.currentX : comment.absoluteX;
+        const pinY = isDragging ? dragState.currentY : comment.absoluteY;
         
         return comment.visible && (
           <div
@@ -353,7 +353,7 @@ export default function CodesphereOverlay() {
 
             {/* Tooltip - only show when not dragging */}
             {activeTooltip === comment.id && !dragState && (
-              <div className="cs-tooltip">
+              <div className="cs-tooltip" onMouseDown={(e) => e.stopPropagation()}>
                 <div className="cs-tooltip-header">
                   <img
                     src={comment.author.avatar}
@@ -370,6 +370,7 @@ export default function CodesphereOverlay() {
                   {!comment.resolved && (
                     <button
                       className="cs-tooltip-btn cs-tooltip-btn-primary"
+                      onMouseDown={(e) => e.stopPropagation()}
                       onClick={(e) => {
                         e.stopPropagation();
                         handleResolveComment(comment.id);
@@ -380,6 +381,7 @@ export default function CodesphereOverlay() {
                   )}
                   <button
                     className="cs-tooltip-btn cs-tooltip-btn-secondary"
+                    onMouseDown={(e) => e.stopPropagation()}
                     onClick={(e) => {
                       e.stopPropagation();
                       handleDeleteComment(comment.id);
