@@ -44,8 +44,11 @@ interface PendingComment {
 
 interface DragState {
   commentId: string;
+  startX: number;
+  startY: number;
   currentX: number;
   currentY: number;
+  isDragging: boolean; // Only true after mouse moves > threshold
 }
 
 export default function CodesphereOverlay() {
@@ -142,31 +145,55 @@ export default function CodesphereOverlay() {
   }, [commentMode, handleMouseMove, handleClick]);
 
   // Drag handlers
+  const DRAG_THRESHOLD = 5; // pixels before considering it a drag
+
   const handleDragStart = useCallback((e: React.MouseEvent, commentId: string) => {
     e.preventDefault();
     e.stopPropagation();
-    setActiveTooltip(null);
     setDragState({
       commentId,
+      startX: e.clientX,
+      startY: e.clientY,
       currentX: e.clientX,
-      currentY: e.clientY
+      currentY: e.clientY,
+      isDragging: false
     });
   }, []);
 
   const handleDragMove = useCallback((e: MouseEvent) => {
     if (!dragState) return;
-    // Update drag position to follow cursor
+    
+    const dx = Math.abs(e.clientX - dragState.startX);
+    const dy = Math.abs(e.clientY - dragState.startY);
+    const shouldDrag = dx > DRAG_THRESHOLD || dy > DRAG_THRESHOLD;
+    
     setDragState(prev => prev ? {
       ...prev,
       currentX: e.clientX,
-      currentY: e.clientY
+      currentY: e.clientY,
+      isDragging: prev.isDragging || shouldDrag
     } : null);
+    
+    // Close tooltip when starting to drag
+    if (shouldDrag && !dragState.isDragging) {
+      setActiveTooltip(null);
+    }
   }, [dragState]);
 
   const handleDragEnd = useCallback(async (e: MouseEvent) => {
     if (!dragState) return;
 
-    // Find element under cursor
+    const wasDragging = dragState.isDragging;
+    const commentId = dragState.commentId;
+
+    // If it was just a click (no drag), toggle the tooltip
+    if (!wasDragging) {
+      setDragState(null);
+      setActiveTooltip(prev => prev === commentId ? null : commentId);
+      return;
+    }
+
+    // It was a real drag - find element under cursor and save position
     const overlayRoot = document.getElementById('codesphere-feedback-root');
     if (overlayRoot) {
       overlayRoot.style.pointerEvents = 'none';
@@ -187,13 +214,13 @@ export default function CodesphereOverlay() {
 
       // Update local state immediately
       setComments(prev => prev.map(c => 
-        c.id === dragState.commentId 
+        c.id === commentId 
           ? { ...c, selector, xPercentage, yPercentage, viewport }
           : c
       ));
 
       // Persist to server
-      await updateCommentPosition(dragState.commentId, selector, xPercentage, yPercentage, viewport);
+      await updateCommentPosition(commentId, selector, xPercentage, yPercentage, viewport);
     }
 
     setDragState(null);
@@ -304,10 +331,10 @@ export default function CodesphereOverlay() {
 
       {/* Comment Pins */}
       {positionedComments.map((comment, index) => {
-        const isDragging = dragState?.commentId === comment.id;
-        // Use drag position if dragging, otherwise use calculated position
-        const pinX = isDragging ? dragState.currentX : comment.absoluteX;
-        const pinY = isDragging ? dragState.currentY : comment.absoluteY;
+        const isDragging = dragState?.commentId === comment.id && dragState.isDragging;
+        // Use drag position if actively dragging, otherwise use calculated position
+        const pinX = (dragState?.commentId === comment.id) ? dragState.currentX : comment.absoluteX;
+        const pinY = (dragState?.commentId === comment.id) ? dragState.currentY : comment.absoluteY;
         
         return comment.visible && (
           <div
@@ -317,16 +344,9 @@ export default function CodesphereOverlay() {
               left: pinX,
               top: pinY,
               opacity: comment.resolved ? 0.5 : 1,
-              cursor: isDragging ? 'grabbing' : 'grab'
+              cursor: isDragging ? 'grabbing' : 'pointer'
             }}
             onMouseDown={(e) => handleDragStart(e, comment.id)}
-            onClick={(e) => {
-              // Only show tooltip if not dragging
-              if (!dragState) {
-                e.stopPropagation();
-                setActiveTooltip(activeTooltip === comment.id ? null : comment.id);
-              }
-            }}
           >
             <PinIcon color={comment.resolved ? '#94a3b8' : '#6366f1'} />
             <span className="cs-pin-number">{index + 1}</span>
