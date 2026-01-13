@@ -13,6 +13,17 @@ const TARGET_URL = process.env.TARGET_URL || 'http://localhost:3001';
 const TOOLS_URL = process.env.TOOLS_URL || 'http://localhost:3002';
 const COMMENTS_FILE = join(__dirname, 'comments.json');
 
+// Startup logging for debugging
+console.log('='.repeat(50));
+console.log('🔀 Codesphere Proxy - Environment Configuration');
+console.log('='.repeat(50));
+console.log(`PORT: ${PORT}`);
+console.log(`TARGET_URL: ${TARGET_URL}`);
+console.log(`TOOLS_URL: ${TOOLS_URL}`);
+console.log(`process.env.TARGET_URL: ${process.env.TARGET_URL || '(not set)'}`);
+console.log(`process.env.TOOLS_URL: ${process.env.TOOLS_URL || '(not set)'}`);
+console.log('='.repeat(50));
+
 // Middleware
 app.use(cors());
 app.use(express.json());
