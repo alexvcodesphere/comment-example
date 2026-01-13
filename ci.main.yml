@@ -1,0 +1,65 @@
+schemaVersion: v0.2
+prepare:
+  steps:
+    - name: update node
+      command: sudo n lts
+    - name: Install & build commenting ui
+      command: cd commenting-ui && npm install && npm run build
+    - name: install proxy
+      command: cd proxy && npm install
+    - name: Install target app
+      command: cd target-app && npm install
+test:
+  steps: []
+run:
+  comment-ui:
+    steps:
+      - command: sudo n lts
+      - command: cd commenting-ui && npm start
+    plan: 8
+    replicas: 1
+    network:
+      ports:
+        - port: 3000
+          isPublic: false
+        - port: 3002
+          isPublic: false
+      paths:
+        - port: 3002
+          path: /commenting-ui
+    env:
+      BASE_PATH: /commenting-ui
+  target-app:
+    steps:
+      - name: update node
+        command: sudo n lts
+      - command: cd target-app && node server.js
+    plan: 8
+    replicas: 1
+    network:
+      ports:
+        - port: 3000
+          isPublic: false
+        - port: 3001
+          isPublic: false
+      paths:
+        - port: 3001
+          path: /target
+    env:
+      BASE_PATH: /target
+  cs-proxy:
+    steps:
+      - command: sudo n lts
+      - command: cd proxy && node server.js
+    plan: 8
+    replicas: 1
+    network:
+      ports:
+        - port: 3000
+          isPublic: false
+      paths:
+        - port: 3000
+          path: /
+    env:
+      TARGET_URL: https://77015-3000.2.codesphere.com/target
+      TOOLS_URL: https://77015-3000.2.codesphere.com/commenting-ui
