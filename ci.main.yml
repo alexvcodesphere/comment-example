@@ -15,20 +15,18 @@ run:
   comment-ui:
     steps:
       - command: sudo n lts
-      - command: cd commenting-ui && npm start
+      - command: cd commenting-ui && node server.js
     plan: 8
     replicas: 1
     network:
       ports:
         - port: 3000
           isPublic: false
-        - port: 3002
-          isPublic: false
       paths:
-        - port: 3002
+        - port: 3000
           path: /commenting-ui
     env:
-      BASE_PATH: /commenting-ui
+      NODE_ENV: prod
   target-app:
     steps:
       - name: update node
@@ -40,13 +38,11 @@ run:
       ports:
         - port: 3000
           isPublic: false
-        - port: 3001
-          isPublic: false
       paths:
-        - port: 3001
+        - port: 3000
           path: /target
     env:
-      BASE_PATH: /target
+      NODE_ENV: prod
   cs-proxy:
     steps:
       - command: sudo n lts
@@ -61,5 +57,6 @@ run:
         - port: 3000
           path: /
     env:
-      TARGET_URL: https://77015-3000.2.codesphere.com/target
-      TOOLS_URL: https://77015-3000.2.codesphere.com/commenting-ui
+      NODE_ENV: prod
+      TARGET_URL: http://localhost:3000/target
+      TOOLS_URL: http://localhost:3000/commenting-ui
