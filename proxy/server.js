@@ -17,11 +17,10 @@ const COMMENTS_FILE = join(__dirname, 'comments.json');
 console.log('='.repeat(50));
 console.log('🔀 Codesphere Proxy - Environment Configuration');
 console.log('='.repeat(50));
+console.log(`NODE_ENV: ${process.env.NODE_ENV || '(not set)'}`);
 console.log(`PORT: ${PORT}`);
 console.log(`TARGET_URL: ${TARGET_URL}`);
 console.log(`TOOLS_URL: ${TOOLS_URL}`);
-console.log(`process.env.TARGET_URL: ${process.env.TARGET_URL || '(not set)'}`);
-console.log(`process.env.TOOLS_URL: ${process.env.TOOLS_URL || '(not set)'}`);
 console.log('='.repeat(50));
 
 // Middleware
