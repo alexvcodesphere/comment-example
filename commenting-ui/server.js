@@ -18,6 +18,12 @@ console.log(`BASE_PATH: ${BASE_PATH || '(root)'}`);
 console.log(`process.env.BASE_PATH: ${process.env.BASE_PATH || '(not set)'}`);
 console.log('='.repeat(50));
 
+// Request logging middleware
+app.use((req, res, next) => {
+  console.log(`[Commenting UI] ${req.method} ${req.url}`);
+  next();
+});
+
 // Enable CORS for all origins
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -26,13 +32,13 @@ app.use((req, res, next) => {
 });
 
 // Serve the built script under the base path
-app.use(BASE_PATH, express.static(join(__dirname, 'dist')));
-
-// Also handle root for when BASE_PATH is set
 if (BASE_PATH) {
+  app.use(BASE_PATH, express.static(join(__dirname, 'dist')));
   app.get('/', (req, res) => {
     res.redirect(BASE_PATH);
   });
+} else {
+  app.use(express.static(join(__dirname, 'dist')));
 }
 
 app.listen(PORT, () => {

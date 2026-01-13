@@ -18,14 +18,20 @@ console.log(`BASE_PATH: ${BASE_PATH || '(root)'}`);
 console.log(`process.env.BASE_PATH: ${process.env.BASE_PATH || '(not set)'}`);
 console.log('='.repeat(50));
 
-// Serve static files under the base path
-app.use(BASE_PATH, express.static(__dirname));
+// Request logging middleware
+app.use((req, res, next) => {
+  console.log(`[Target App] ${req.method} ${req.url}`);
+  next();
+});
 
-// Also handle root for when BASE_PATH is set
+// Serve static files under the base path
 if (BASE_PATH) {
+  app.use(BASE_PATH, express.static(__dirname));
   app.get('/', (req, res) => {
     res.redirect(BASE_PATH);
   });
+} else {
+  app.use(express.static(__dirname));
 }
 
 app.listen(PORT, () => {
