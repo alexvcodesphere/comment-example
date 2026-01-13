@@ -9,6 +9,15 @@ const app = express();
 const PORT = process.env.PORT || 3002;
 const BASE_PATH = process.env.BASE_PATH || '';
 
+// Startup logging for debugging
+console.log('='.repeat(50));
+console.log('📦 Commenting UI - Environment Configuration');
+console.log('='.repeat(50));
+console.log(`PORT: ${PORT}`);
+console.log(`BASE_PATH: ${BASE_PATH || '(root)'}`);
+console.log(`process.env.BASE_PATH: ${process.env.BASE_PATH || '(not set)'}`);
+console.log('='.repeat(50));
+
 // Enable CORS for all origins
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
