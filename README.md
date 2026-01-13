@@ -174,6 +174,63 @@ interface Comment {
 - **Bug reporting** - Pin comments to exact problem areas
 - **Client feedback** - Non-technical stakeholders can comment visually
 
+## ☁️ Codesphere Deployment
+
+Deploy as **3 separate services** with path-based routing:
+
+### Environment Variables
+
+| Service           | Env Variable | Value                                              | Description                   |
+| ----------------- | ------------ | -------------------------------------------------- | ----------------------------- |
+| **Target App**    | `BASE_PATH`  | `/target`                                          | Path where service is mounted |
+| **Commenting UI** | `BASE_PATH`  | `/commenting-ui`                                   | Path where service is mounted |
+| **Proxy**         | `TARGET_URL` | `https://<workspace>.codesphere.com/target`        | Full URL to Target App        |
+| **Proxy**         | `TOOLS_URL`  | `https://<workspace>.codesphere.com/commenting-ui` | Full URL to Commenting UI     |
+
+### Service Configuration
+
+#### Target App (`/target`)
+
+```bash
+# CI Pipeline
+cd target-app && npm install
+
+# Run Command
+cd target-app && node server.js
+
+# Environment Variables
+BASE_PATH=/target
+```
+
+#### Commenting UI (`/commenting-ui`)
+
+```bash
+# CI Pipeline
+cd commenting-ui && npm install && npm run build
+
+# Run Command
+cd commenting-ui && node server.js
+
+# Environment Variables
+BASE_PATH=/commenting-ui
+```
+
+#### Proxy (`/` - Entry Point)
+
+```bash
+# CI Pipeline
+cd proxy && npm install
+
+# Run Command
+cd proxy && node server.js
+
+# Environment Variables
+TARGET_URL=https://77015-3000.2.codesphere.com/target
+TOOLS_URL=https://77015-3000.2.codesphere.com/commenting-ui
+```
+
+> **Note:** Replace `77015-3000.2.codesphere.com` with your actual Codesphere workspace URL.
+
 ## 📄 License
 
 MIT
