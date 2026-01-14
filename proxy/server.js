@@ -158,8 +158,8 @@ app.patch('/api/comments/:id/position', (req, res) => {
 
 app.use(async (req, res) => {
   try {
-    // Fetch from target app
-    const targetUrl = `${TARGET_URL}${req.path === '/' ? '/index.html' : req.path}`;
+    // Fetch from target app (Next.js serves routes directly, not /index.html)
+    const targetUrl = `${TARGET_URL}${req.path}`;
     console.log(`[Proxy] Fetching: ${targetUrl}`);
 
     const response = await fetch(targetUrl);

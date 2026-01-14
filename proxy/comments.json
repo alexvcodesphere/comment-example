@@ -153,6 +153,120 @@
         "width": 2560,
         "height": 1294
       }
+    },
+    {
+      "id": "comment_1768401828717_t12g1odxd",
+      "selector": ".pricing-card.popular",
+      "xPercentage": 89.37729231184272,
+      "yPercentage": 3.4669770465317913,
+      "content": "comment",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-14T14:43:48.717Z",
+      "resolved": false,
+      "thread": [],
+      "viewport": {
+        "width": 1710,
+        "height": 891
+      }
+    },
+    {
+      "id": "comment_1768401855160_qfbmvuj99",
+      "selector": "#pricing > div.pricing-grid > div.pricing-card:nth-of-type(3) > h3",
+      "xPercentage": 97.84482758620689,
+      "yPercentage": 31.251271617497455,
+      "content": "hello",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-14T14:44:15.160Z",
+      "resolved": false,
+      "thread": [],
+      "viewport": {
+        "width": 1710,
+        "height": 891
+      }
+    },
+    {
+      "id": "comment_1768402209468_c6sp89wjk",
+      "selector": ".modal-overlay",
+      "xPercentage": 69.94152046783626,
+      "yPercentage": 25.701459034792368,
+      "content": "test123",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-14T14:50:09.468Z",
+      "resolved": false,
+      "thread": [],
+      "viewport": {
+        "width": 1710,
+        "height": 891
+      }
+    },
+    {
+      "id": "comment_1768402223734_a7e0jwmh9",
+      "selector": ".accordion-content",
+      "xPercentage": 56.96185323146361,
+      "yPercentage": 64.78680949380382,
+      "content": "tets",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-14T14:50:23.734Z",
+      "resolved": false,
+      "thread": [],
+      "viewport": {
+        "width": 1710,
+        "height": 891
+      }
+    },
+    {
+      "id": "comment_1768402240150_40dz9b6tz",
+      "selector": "#dropdown-demo-card > div.dropdown-container > ul.dropdown-menu > li.dropdown-item:nth-of-type(3)",
+      "xPercentage": 59.74605073547404,
+      "yPercentage": 48.534971644612476,
+      "content": "ugly dropdown!",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-14T14:50:40.150Z",
+      "resolved": false,
+      "thread": [],
+      "viewport": {
+        "width": 1710,
+        "height": 891
+      }
+    },
+    {
+      "id": "comment_1768402256833_ai48j1zth",
+      "selector": ".toast.toast-success",
+      "xPercentage": 46.90799396681749,
+      "yPercentage": 54.85621269669018,
+      "content": "test",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-14T14:50:56.833Z",
+      "resolved": false,
+      "thread": [],
+      "viewport": {
+        "width": 1710,
+        "height": 891
+      }
     }
   ]
 }
