@@ -12,6 +12,23 @@ prepare:
 test:
   steps: []
 run:
+  cs-proxy:
+    steps:
+      - command: sudo n lts
+      - command: cd proxy && node server.js
+    plan: 8
+    replicas: 1
+    network:
+      ports:
+        - port: 3000
+          isPublic: false
+      paths:
+        - port: 3000
+          path: /
+          stripPath: true
+    env:
+      TARGET_URL: https://77015-3000.2.codesphere.com/target
+      TOOLS_URL: https://77015-3000.2.codesphere.com/commenting-ui
   comment-ui:
     steps:
       - command: sudo n lts
@@ -25,10 +42,11 @@ run:
         - port: 3002
           isPublic: false
       paths:
-        - port: 3002
+        - port: 3000
           path: /commenting-ui
+          stripPath: true
     env:
-      BASE_PATH: /commenting-ui
+      BASE_PATH: /
   target-app:
     steps:
       - name: update node
@@ -43,23 +61,8 @@ run:
         - port: 3001
           isPublic: false
       paths:
-        - port: 3001
+        - port: 3000
           path: /target
+          stripPath: true
     env:
-      BASE_PATH: /target
-  cs-proxy:
-    steps:
-      - command: sudo n lts
-      - command: cd proxy && node server.js
-    plan: 8
-    replicas: 1
-    network:
-      ports:
-        - port: 3000
-          isPublic: false
-      paths:
-        - port: 3000
-          path: /
-    env:
-      TARGET_URL: https://77015-3000.2.codesphere.com/target
-      TOOLS_URL: https://77015-3000.2.codesphere.com/commenting-ui
+      BASE_PATH: /

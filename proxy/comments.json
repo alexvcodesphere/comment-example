@@ -3,29 +3,10 @@
   "pageUrl": "/",
   "comments": [
     {
-      "id": "comment_1768305653632_847chszko",
-      "selector": ".hero-content",
-      "xPercentage": 61.04868913857678,
-      "yPercentage": 7.403189066059225,
-      "content": "blabla",
-      "author": {
-        "id": "user_demo",
-        "name": "Demo User",
-        "avatar": "https://i.pravatar.cc/48?img=12"
-      },
-      "createdAt": "2026-01-13T12:00:53.632Z",
-      "resolved": false,
-      "thread": [],
-      "viewport": {
-        "width": 598,
-        "height": 1038
-      }
-    },
-    {
       "id": "comment_1768305870727_x2exv6wdl",
       "selector": ".floating-card.card-1",
-      "xPercentage": 40.738705067604705,
-      "yPercentage": 13.59546680005426,
+      "xPercentage": 55.512806419698805,
+      "yPercentage": 52.77549342105263,
       "content": "comment",
       "author": {
         "id": "user_demo",
@@ -33,18 +14,18 @@
         "avatar": "https://i.pravatar.cc/48?img=12"
       },
       "createdAt": "2026-01-13T12:04:30.727Z",
-      "resolved": false,
+      "resolved": true,
       "thread": [],
       "viewport": {
-        "width": 1457,
-        "height": 1056
+        "width": 1269,
+        "height": 1279
       }
     },
     {
       "id": "comment_1768306023607_cqxkc9svx",
       "selector": ".floating-card.card-3",
-      "xPercentage": 84.49912565575818,
-      "yPercentage": 38.34483518719479,
+      "xPercentage": 98.88833374968773,
+      "yPercentage": 41.50464807718394,
       "content": "floatin card",
       "author": {
         "id": "user_demo",
@@ -52,11 +33,125 @@
         "avatar": "https://i.pravatar.cc/48?img=12"
       },
       "createdAt": "2026-01-13T12:07:03.607Z",
+      "resolved": true,
+      "thread": [],
+      "viewport": {
+        "width": 1269,
+        "height": 1279
+      }
+    },
+    {
+      "id": "comment_1768311529438_tgd54xs23",
+      "selector": ".hero-title",
+      "xPercentage": 75.3731343283582,
+      "yPercentage": 24.835109081684422,
+      "content": "Halloooo",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-13T13:38:49.438Z",
+      "resolved": true,
+      "thread": [],
+      "viewport": {
+        "width": 1268,
+        "height": 1278
+      }
+    },
+    {
+      "id": "comment_1768311579678_z4ptoft60",
+      "selector": "#features > h2.section-title",
+      "xPercentage": 59.12379421221865,
+      "yPercentage": 43.75,
+      "content": "blaablaaaa",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-13T13:39:39.678Z",
       "resolved": false,
       "thread": [],
       "viewport": {
-        "width": 1457,
-        "height": 1056
+        "width": 2552,
+        "height": 1278
+      }
+    },
+    {
+      "id": "comment_1768312112760_u2ogdw1wj",
+      "selector": "#cta-primary",
+      "xPercentage": 92.11087420042644,
+      "yPercentage": 16.8125,
+      "content": "Mein comment",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-13T13:48:32.760Z",
+      "resolved": true,
+      "thread": [],
+      "viewport": {
+        "width": 2560,
+        "height": 1294
+      }
+    },
+    {
+      "id": "comment_1768312612670_f9633obdj",
+      "selector": "#testimonials > div.testimonials-grid > blockquote.testimonial-card:nth-of-type(1) > footer > img.avatar",
+      "xPercentage": 60.416666666666664,
+      "yPercentage": 57.633463541666664,
+      "content": "Comment here.",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-13T13:56:52.670Z",
+      "resolved": false,
+      "thread": [],
+      "viewport": {
+        "width": 2499,
+        "height": 1294
+      }
+    },
+    {
+      "id": "comment_1768313529276_39r46p8va",
+      "selector": ".floating-card.card-2",
+      "xPercentage": 37.46224643680415,
+      "yPercentage": 34.23034364334906,
+      "content": "Comment from Gordey",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-13T14:12:09.276Z",
+      "resolved": false,
+      "thread": [],
+      "viewport": {
+        "width": 1280,
+        "height": 686
+      }
+    },
+    {
+      "id": "comment_1768318067967_umnm3z18y",
+      "selector": ".hero-subtitle",
+      "xPercentage": 73.50746268656717,
+      "yPercentage": 31.884765625,
+      "content": "Comments",
+      "author": {
+        "id": "user_demo",
+        "name": "Demo User",
+        "avatar": "https://i.pravatar.cc/48?img=12"
+      },
+      "createdAt": "2026-01-13T15:27:47.967Z",
+      "resolved": false,
+      "thread": [],
+      "viewport": {
+        "width": 2560,
+        "height": 1294
       }
     }
   ]
